@@ -4,10 +4,9 @@
 </p>
 
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Latest Version](https://img.shields.io/github/release/GoyanDevelopers/LaraBs2.svg?style=flat-square)](https://github.com/GoyanDevelopers/LaraBs2/releases)
 [![Software License][ico-license]](LICENSE.md)
-[![Total Downloads][ico-downloads]][link-downloads]
-
+[![Total Downloads](https://img.shields.io/packagist/dt/goyan/larabs2.svg?style=flat-square)](https://packagist.org/packages/goyan/larabs2)
 
 ## Sobre o pacote
 
