@@ -24,13 +24,13 @@ $ composer require goyan/bs2-laravel
 Em seguida, você deve publicar os arquivos de configuração e migração do pacote usando o comando artisan: `vendor:publish`. O `bs2.php` (arquivo de configuração) será colocado no diretório `config` do seu aplicativo:
 
 ``` bash
-$ php artisan  vendor:publish  --provider="Goyan\Bs2\Bs2ServiceProvider"
+$ php artisan vendor:publish --provider="Goyan\Bs2\Bs2ServiceProvider"
 ```
 
 Finalmente, você deve executar suas migrações de banco de dados. O comando abaixo criará uma tabela de banco de dados para armazenar o token da API:
 
 ``` bash
-$ php artisan  migrate
+$ php artisan migrate
 ```
 
 Em seguida, configure o provedor de serviços em seu arquivo `config/app.php`:
