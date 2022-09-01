@@ -1,0 +1,20 @@
+{
+    "name": "goyan/larabs2",
+    "description": "Integre sua aplicação Laravel, de forma simples, com o Banco BS2.",
+    "authors": [
+        {
+            "name": "Goyan Developers",
+            "email": "contato@goyan.com.br"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Goyan\\Bs2\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0.2",
+        "laravel/framework": "^9"
+    }
+}
