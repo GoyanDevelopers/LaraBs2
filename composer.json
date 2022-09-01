@@ -1,6 +1,7 @@
 {
     "name": "goyan/larabs2",
     "description": "Integre sua aplicação Laravel, de forma simples, com o Banco BS2.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Goyan Developers",
