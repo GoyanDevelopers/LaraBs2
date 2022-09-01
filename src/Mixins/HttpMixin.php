@@ -3,6 +3,7 @@
 namespace Goyan\Bs2\Mixins;
 
 use Illuminate\Support\Facades\Http;
+use Goyan\Bs2\Models\Token;
 
 class HttpMixin
 {
@@ -12,8 +13,7 @@ class HttpMixin
             callable|null $callback = null,
         ): \Illuminate\Http\Client\PendingRequest {
 
-            $basic = Http::retry(2, 100)
-                ->withBasicAuth(config('bs2.key'), config('bs2.secret'))
+            $basic = Http::withBasicAuth(config('bs2.key'), config('bs2.secret'))
                 ->asForm()
                 ->post(config('bs2.endpoint') . '/auth/oauth/v2/token', [
                     'grant_type' => 'client_credentials',
@@ -41,12 +41,11 @@ class HttpMixin
             callable|null $callback = null,
         ): \Illuminate\Http\Client\PendingRequest {
 
-            $token = Models\Token::firstOrfail();
+            $token = Token::firstOrfail();
 
             if (now()->isAfter($token->expires_in)) {
 
-                $basic = Http::retry(2, 100)
-                    ->withBasicAuth(config('bs2.key'), config('bs2.secret'))
+                $basic = Http::withBasicAuth(config('bs2.key'), config('bs2.secret'))
                     ->asForm()
                     ->post(config('bs2.endpoint') . '/auth/oauth/v2/token', [
                         'grant_type' => 'refresh_token',
@@ -66,8 +65,7 @@ class HttpMixin
                     ->collect();
 
                 $token->update(
-                    $basic->merge(['expires_in' => now()->addSeconds(($basic->expires_in - 10) / 60)])
-                        ->all()
+                    $basic->merge(['expires_in' => now()->addSeconds($basic->get('expires_in'))->subSeconds(10)])->all()
                 );
             }
 

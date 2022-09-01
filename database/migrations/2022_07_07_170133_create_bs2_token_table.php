@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bs2_token', function (Blueprint $table) {
+            $table->id();
             $table->string('access_token');
             $table->string('refresh_token');
             $table->timestamp('expires_in')->nullable();
