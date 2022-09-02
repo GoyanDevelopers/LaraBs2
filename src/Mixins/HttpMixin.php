@@ -17,7 +17,7 @@ class HttpMixin
                 ->asForm()
                 ->post(config('bs2.endpoint') . '/auth/oauth/v2/token', [
                     'grant_type' => 'client_credentials',
-                    'scope' => 'webhook.read webhook.write pix.write pix.read'
+                    'scope' => 'cob.write cob.read dict.write dict.read webhook.read webhook.write pix.read pix.write'
                 ])
                 ->throw(function ($response, $e) use ($callback): callable {
 
