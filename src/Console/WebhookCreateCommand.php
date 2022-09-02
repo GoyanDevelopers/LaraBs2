@@ -34,8 +34,6 @@ class WebhookCreateCommand extends Command
 
         $connect = Http::pix(fn ($error) => exit($this->error($error)));
 
-        $contaNumero = $this->ask('Digite o número da conta');
-
         $evento = $this->choice(
             'Qual o tipo do webhook?',
             [
@@ -53,9 +51,8 @@ class WebhookCreateCommand extends Command
 
         $url = $this->ask('Digite a url de notificação do webhook');
 
-        $this->table(['Número da conta', 'Url de notificação', 'Evento'], [
+        $this->table(['Url de notificação', 'Evento'], [
             [
-                $contaNumero,
                 $url,
                 implode(', ', $evento)
             ]
@@ -66,8 +63,7 @@ class WebhookCreateCommand extends Command
             $response = $connect->put('webhook/bs2', [
                 [
                     'url' => $url,
-                    'eventos' => $evento,
-                    'contaNumero' => $contaNumero
+                    'eventos' => $evento
                 ]
             ]);
 
